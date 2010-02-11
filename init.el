@@ -50,6 +50,13 @@
 (load custom-file 'noerror)
 
 ;; You can keep system- or user-specific customizations here:
+(load-file "~/.emacs.d/themes/railscasts.el")
+(require 'color-theme)
+(setq color-theme-is-global t)
+(color-theme-railscasts)
+(setq mac-allow-anti-aliasing nil)
+
+(require 'linum)
 
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
