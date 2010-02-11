@@ -58,6 +58,14 @@
 
 (require 'linum)
 
+;; Yasnippets - Textmate style snippets
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+
+
+
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
 

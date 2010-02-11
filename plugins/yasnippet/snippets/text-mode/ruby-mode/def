@@ -1,0 +1,7 @@
+#name : def ... end
+#contributor : paukul <paukul@gmail.com>
+#group : definitions
+# --
+def ${1:method_name}
+    $0
+end
