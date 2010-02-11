@@ -64,7 +64,11 @@
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
-
+;; erlang mode
+(setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
+(setq erlang-root-dir "/usr/local/Cellar/erlang/R13B03/lib/erlang")
+(setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
+(require 'erlang-start)
 
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
