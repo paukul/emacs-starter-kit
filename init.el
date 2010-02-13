@@ -70,6 +70,9 @@
 (setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
 (require 'erlang-start)
 
+(add-to-list 'load-path "~/.emacs.d/vendor")
+(require 'haml-mode)
+
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
 
