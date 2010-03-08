@@ -2,7 +2,7 @@
 
 ;; Manually set PATH for use by eshell, rspec-mode, etc.
 (let ((path))
-  (setq path (concat "/opt/ruby-enterprise/bin:"
+  (setq path (concat "~/.gem/ruby/1.8/bin:"
                      "~/bin:"
                      "~/src/homebrew/bin:"
                      "/usr/local/bin:"
@@ -34,6 +34,11 @@
 ;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
 (defvar backup-dir (concat "/tmp/emacs_backups/" (user-login-name) "/"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
+
+;; Makes load time faster.
+(defun byte-recompile-home ()
+  (interactive)
+  (byte-recompile-directory "~/.emacs.d" 0))
 
 ;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -93,7 +98,7 @@
 ;;                       (pycomplexity-mode))))
 
 ;; ruby-mode
-(require 'topfunky-sinatra)
+(require 'topfunky/sinatra)
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/ruby-complexity"))
 (require 'linum)
 (require 'ruby-complexity)
@@ -104,11 +109,25 @@
                       (ruby-complexity-mode)
                       )))
 
+
+
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/cucumber"))
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+;; Cucumber menu
+(setq feature-mode-imenu-generic-expression
+      '(("Group" "\\s-*\\(\\(Feature\\|Scenario\\): .+\\)" 1)
+        ))
+(add-hook 'feature-mode-hook
+          (lambda ()
+            (setq imenu-generic-expression feature-mode-imenu-generic-expression)))
+
+
 ;; Javascript
 (setq js2-basic-offset 2)
 (setq js2-auto-indent-flag nil)
 (setq javascript-indent-level 2)
-(require 'topfunky-js)
+(require 'topfunky/js)
 
 (add-hook 'javascript-mode-hook
           (lambda ()
@@ -173,12 +192,14 @@
 
 ;; org-mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;; Override
 (add-hook 'org-mode-hook
           (lambda()
             (local-set-key [(control meta return)] 'org-insert-heading)
             (local-set-key [(control shift left)] 'previous-buffer)
             (local-set-key [(control shift right)] 'next-buffer)
             (local-set-key [(meta shift right)] 'ido-switch-buffer)
+            (local-set-key [(meta shift left)] 'magit-status)
             ))
 
 
@@ -188,6 +209,8 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(require 'topfunky/markdown)
 
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
@@ -248,6 +271,11 @@
                                          'fullboth)))
 (global-set-key (kbd "M-n") 'toggle-fullscreen)
 
+(defun recenter-to-top ()
+  "Take the current point and scroll it to the top of the screen."
+  (interactive)
+  (recenter 1))
+(global-set-key [(control shift l)] 'recenter-to-top)
 
 ;; Keyboard
 
@@ -290,5 +318,5 @@
 (server-start)
 
 ;; Activate theme
-(load (concat dotfiles-dir "topfunky-theme.el"))
+(load (concat dotfiles-dir "topfunky/theme.el"))
 (color-theme-topfunky)
