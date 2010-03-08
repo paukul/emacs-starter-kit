@@ -73,6 +73,11 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'haml-mode)
 
+;; Stop that insane emacs default scrolling
+;;(require 'smooth-scrolling)
+(setq mouse-wheel-progressive-speed nil)
+(setq show-trailing-whitespace t)
+
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
 
