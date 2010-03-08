@@ -62,10 +62,24 @@
 (require 'linum)
 
 ;; Yasnippets - Textmate style snippets
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+;; (require 'yasnippet)
+;; (yas/initialize)
+;; (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+
+;; rails minor mode
+(require 'snippet)
+(require 'find-recursive)
+(add-to-list 'load-path "~/.emacs.d/plugins/emacs-rails")
+(require 'rails)
+
+;; mode compile
+(autoload 'mode-compile "mode-compile"
+"Command to compile current buffer file based on the major mode" t)
+(global-set-key "\C-cc" 'mode-compile)
+(autoload 'mode-compile-kill "mode-compile"
+"Command to kill a compilation launched by `mode-compile'" t)
+(global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; erlang mode
 (setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
@@ -75,6 +89,11 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'haml-mode)
+
+;; Stop that insane emacs default scrolling
+;;(require 'smooth-scrolling)
+(setq mouse-wheel-progressive-speed nil)
+(setq show-trailing-whitespace t)
 
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el"))
