@@ -59,10 +59,10 @@
 (require 'linum)
 
 ;; Yasnippets - Textmate style snippets
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+;; (require 'yasnippet)
+;; (yas/initialize)
+;; (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
 ;; rails minor mode
 (require 'snippet)
