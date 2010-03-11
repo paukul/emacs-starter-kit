@@ -36,7 +36,7 @@
 
 (require 'package)
 (package-initialize)
-;;(require 'starter-kit-elpa)
+; (require 'starter-kit-elpa)
 
 ;; Load up starter kit customizations:
 
@@ -67,6 +67,10 @@
 ;; (yas/initialize)
 ;; (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
+(add-to-list 'load-path "~/.emacs.d/vendor/textmate")
+(require 'textmate)
+(textmate-mode)
+
 ;; rails minor mode
 (require 'snippet)
 (require 'find-recursive)
@@ -82,10 +86,10 @@
 (global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; erlang mode
-(setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
-(setq erlang-root-dir "/usr/local/Cellar/erlang/R13B03/lib/erlang")
-(setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
-(require 'erlang-start)
+;(setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
+;(setq erlang-root-dir "/usr/local/Cellar/erlang/R13B03/lib/erlang")
+;(setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
+;(require 'erlang-start)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'haml-mode)
@@ -101,6 +105,7 @@
 (if (file-exists-p system-specific-config) (load system-specific-config))
 (if (file-exists-p user-specific-config) (load user-specific-config))
 
+;;(require 'topfunky)
 ;; Benchmarking
 (message "My .emacs loaded in %ds"
          (destructuring-bind (hi lo ms) (current-time)
@@ -109,4 +114,5 @@
 
 
 (provide 'init)
+
 ;;; init.el ends here
