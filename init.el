@@ -82,10 +82,10 @@
 (global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; erlang mode
-(setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
-(setq erlang-root-dir "/usr/local/Cellar/erlang/R13B03/lib/erlang")
-(setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
-(require 'erlang-start)
+;; (setq load-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/lib/tools-2.6.5/emacs" load-path))
+;; (setq erlang-root-dir "/usr/local/Cellar/erlang/R13B03/lib/erlang")
+;; (setq exec-path (cons "/usr/local/Cellar/erlang/R13B03/lib/erlang/bin" exec-path))
+;; (require 'erlang-start)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'haml-mode)
