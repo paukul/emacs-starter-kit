@@ -50,6 +50,7 @@
 ;; (require 'starter-kit-js)
 
 (load "topfunky")
+(load "paukul")
 
 (regen-autoloads)
 (load custom-file 'noerror)

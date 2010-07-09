@@ -27,11 +27,11 @@
 
 (require 'unbound)
 
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
-(require 'textmate)
-(require 'peepopen)
-(require 'topfunky/textmate-ext)
-(textmate-mode)
+;;(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
+;;(require 'textmate)
+;;(require 'peepopen)
+;;(require 'topfunky/textmate-ext)
+;;(textmate-mode)
 
 (require 'whitespace)
 
@@ -111,5 +111,5 @@
 (color-theme-initialize)
 
 ;; Activate theme
-(load (concat dotfiles-dir "topfunky/theme.el"))
+(load (concat dotfiles-dir "topfunky/theme2.el"))
 (color-theme-topfunky)
