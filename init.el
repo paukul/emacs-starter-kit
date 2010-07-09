@@ -49,6 +49,8 @@
 (require 'starter-kit-ruby)
 ;; (require 'starter-kit-js)
 
+(load "topfunky")
+
 (regen-autoloads)
 (load custom-file 'noerror)
 
@@ -66,6 +68,6 @@
            (- (+ hi lo) (+ (first *emacs-load-start*) (second
                                                        *emacs-load-start*)))))
 
-
+(setq-default show-trailing-whitespace t)
 (provide 'init)
 ;;; init.el ends here
